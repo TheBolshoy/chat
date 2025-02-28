@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/popup.css">
+</head>
+
+<body>
+    <section class="container-wide">
+
+        <section class="menu">
+            <button class="left-button"></button>
+            <button class="setting-button"></button>
+        </section>
+
+        <section class="messenger">
+            <div class="message-me plate">
+                <p>Добрый день!</p>
+                <p class="time">14:45</p>
+            </div>
+            <div class="message-you plate">
+                <p>Доброго дня!</p>
+                <p class="time">14:47</p>
+            </div>
+            <div class="message-you plate">
+                <p>А это второе и, кажется, оно очень
+                    длинное, чтобы поместиться на
+                    одной строке</p>
+                <p class="time">14:50</p>
+            </div>
+            <div class="message-me plate">
+                <p>Добрый день!</p>
+                <p class="time">14:50</p>
+            </div>
+
+            <template id="message">
+                
+                    <p>Добрый день!</p>
+                    <p class="time"></p>
+                
+            </template>
+        </section>
+
+        <section>
+            <form class="input-form" id="input-form" method="dialog">
+                <textarea type="text" name="textarea-form-name" class="message-textarea"
+                    placeholder="Отправить"></textarea>
+                <button class="send-button" type="submit"></button>
+            </form>
+        </section>
+    </section>
+
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close" id="close-popup">&times;</span>
+            <h5>Настройки</h5>
+            <button class="popup-button-send"></button>
+            <p>Имя в чате</p>
+            <input type="text" placeholder="Имя" id="emailInput" class="input-popup">
+        </div>
+    </div>
+
+    <script type="module" src="../js/main.js"></script>
+    <script type="module" src="../js/popup.js"></script>
+    <script type="module" src="../js/form.js"></script>
+</body>
+
+</html>
