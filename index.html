@@ -40,7 +40,7 @@
 
             <template id="message">
                     <p class="text-me"></p>
-                    <p class="time">14:56</p>
+                    <p class="time"></p>
             </template>
         </section>
 
@@ -54,19 +54,41 @@
     </section>
 
 
-    <div class="popup" id="popup">
+
+
+    <div class="popup" id="popup-email">
         <div class="popup-content">
-            <span class="close" id="close-popup">&times;</span>
+            <span class="close" id="close-popup-email">&times;</span>
             <h5>Настройки</h5>
-            <button class="popup-button-send"></button>
-            <p>Имя в чате</p>
-            <input type="text" placeholder="Имя" id="emailInput" class="input-popup">
+            <p>Email:</p>
+            <input type="text" placeholder="Получите код на почту" id="email-input" class="input-popup-email input">
+            <button class="code-button  button" id="get-code-button">Получить код</button>
         </div>
     </div>
 
+    <div class="popup" id="popup-code">
+        <div class="popup-content">
+            <span class="close" id="close-popup-code">&times;</span>
+            <h5>Подтверждение</h5>
+            <p>Код:</p>
+            <input type="text" placeholder="Введите код" id="code-input" class="input-popup-code input">
+            <button class="button" id="send-code-button">Войти</button>
+        </div>
+    </div>
+
+    <div class="popup" id="popup-name">
+        <div class="popup-content">
+            <span class="close" id="close-popup-name">&times;</span>
+            <h5>Настройки</h5>
+            <p>Имя в чате</p>
+            <input type="text" placeholder="Имя" id="name-input" class="input-popup-name input">
+            <button class="code-button  button" id="name-popup-button">Отправить</button>
+        </div>
+    </div>
     <script type="module" src="../js/main.js"></script>
-    <script type="module" src="../js/popup.js"></script>
-    <script type="module" src="../js/form.js"></script>
+    <script type="module" src="../js/popup-email.js"></script>
+    <script type="module" src="../js/popup-code.js"></script>
+    <script type="module" src="../js/popup-name.js"></script>
 </body>
 
 </html>

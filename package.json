@@ -1,14 +1,23 @@
 {
   "name": "chat",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheBolshoy/chat.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/TheBolshoy/chat/issues"
+  },
+  "homepage": "https://github.com/TheBolshoy/chat#readme",
   "dependencies": {
     "date-fns": "^4.1.0",
     "vite": "^6.2.0"

@@ -37,10 +37,11 @@ p {
     align-items: center;
     max-width: 320px;
     height: 460px;
-    border-radius: 40px;
+    border-radius: 20px;
     margin-inline: auto;
-    background: linear-gradient(to left top, #b0c6cf, #c2c2d6);
+    /*background: linear-gradient(to left top, #b0c6cf, #c2c2d6);*/
     padding-inline: 20px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
 }
 
 
@@ -158,7 +159,7 @@ p {
 .message-textarea {
     outline: none;
     border: none;
-    border-radius: 12px;
+    border-radius: 10px;
     background-image: none;
     background-color: white;
     box-shadow: none;
@@ -168,6 +169,7 @@ p {
     font-size: 12px;
     height: 40px;
     line-height: 1.25;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .message-textarea::placeholder {
