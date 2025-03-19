@@ -1,45 +1,38 @@
-import { format } from 'date-fns';
+import { popupEmail } from "./popup-email";
+import { createHTMLUser } from "./createHTMLs";
+import { getTokenFromCookie } from "./utilits";
 
-const form = document.querySelector('#input-form')
-const send = document.querySelector('.send-button')
-const formInput = document.querySelector('.message-textarea')
-const template = document.querySelector('#message')
-const templateContent = template.content.cloneNode(true);
-const messagesContainer = document.querySelector('.messenger')
-const messageTextMe = document.querySelector('.text-me')
-const messageText = formInput.value
+const form = document.getElementById("input-form");
+const send = document.querySelector(".send-button");
+const formInput = document.querySelector(".message-textarea");
+const messageText = formInput.value;
 
+export const token = getTokenFromCookie();
+export const socket = new WebSocket(`wss://edu.strada.one/websockets?${token}`);
 
-function createHTML() {
-    const messagePlate = document.createElement('div')
-    const messageText = formInput.value
+console.log(token);
 
-    messagePlate.setAttribute('class', 'message-me plate')
-    const time = document.querySelector('.time')
-    time.textContent = format(new Date(), 'hh:MM')
-    const templateContent = template.content.cloneNode(true);
-    messagePlate.append(templateContent);
-    messagesContainer.appendChild(messagePlate)
-    //document.body.append(templateContent);
-    messagePlate.firstElementChild.textContent = messageText
-    messagePlate.lastElementChild.textContent = format(new Date(), 'hh:MM')
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+window.onload = function () {
+  if (
+    !document.cookie
+      .split(";")
+      .some((c) => c.trim().startsWith("Authorization" + "="))
+  ) {
+    popupEmail.style.display = "block";
+  }
+  return;
+};
+
+form.addEventListener("keypress", function (event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    const message = formInput.value;
+    createHTMLUser(message);
+    socket.send(
+      JSON.stringify({
+        text: message,
+      })
+    );
+    formInput.value = "";
 }
-
-send.addEventListener('click', function (event) {
-    event.preventDefault()
-    const messageText = formInput.value
-    if (messageText.trim() !== '') {
-        createHTML()
-        formInput.value = ''
-    }
-})
-
-
-formInput.addEventListener('keypress', function (event) {
-    if (event.key === 'Enter') {
-        createHTML();
-        formInput.value = ''
-        event.preventDefault(); // Предотвращение перехода на новую строку
-    }
 });
