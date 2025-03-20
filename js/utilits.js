@@ -1,12 +1,14 @@
-export function getTimeNow(param) {
+import { renderHistoryHTML } from "./createHTMLs";
+
+const colors = ['#011a4b', '#618f98', '#ad473f', '#ad473f', '#0084b9', '#423227', '#e78f08'];
+
+export function getTimeNow() {
   const date = new Date();
   const hours = String(date.getUTCHours()).padStart(2, "0");
   const minutes = String(date.getUTCMinutes()).padStart(2, "0");
   const time = `${hours}:${minutes}`;
   return time;
 }
-
-
 
 export function saveTokenCookie(token) {
   document.cookie = `Authorization=${token}; path=/;`;
@@ -35,11 +37,31 @@ export async function getHistory() {
       throw new Error("Ошибка при загрузке последних сообщений");
     } else {
       const data = await response.json();
-      console.log(data);
-      const arrays = await data.messages;
-      console.log(arrays);
+      const messagesArrays = await data.messages;
+      getLastMessages(messagesArrays);
     }
   } catch (error) {
     console.log(error.message);
   }
 }
+
+function getLastMessages(array) {
+  const lastMessages = array.slice(-300);
+  const timeISO = lastMessages.updatedAt
+  const results = lastMessages.map((item) => ({
+    name: item.user.name,
+    text: item.text,
+    time: getTimeNow(timeISO),
+    email: item.user.email,
+  }));
+  renderHistoryHTML(results);
+}
+
+export function getRandomColor() {
+    const randomIndex = Math.floor(Math.random() * colors.length); 
+    return colors[randomIndex]; 
+}
+
+
+
+

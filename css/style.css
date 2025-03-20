@@ -132,12 +132,14 @@ p {
   color: #ff8000;
   font-weight: 700;
   font-size: 11px;
+  text-transform: capitalize;
 }
 
 .name-bot {
   color: #7ea454;
   font-weight: 700;
   font-size: 11px;
+  text-transform: capitalize;
 }
 
 #textTemplateBot {

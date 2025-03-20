@@ -1,4 +1,5 @@
 import { getHistory, saveTokenCookie } from "./utilits.js";
+
 const openPopupButton = document.querySelector(".button");
 const closePopupButton = document.getElementById("close-popup-code");
 const popup = document.getElementById("popup-code");
